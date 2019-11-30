@@ -23,10 +23,9 @@ Passo 1 (2 pontos):
   (depth-first search = DFS)
 
   Códigos de teste:
-  
-    <p><code>python pacman.py -l tinyMaze -p SearchAgent</code>
-    <p><code>python pacman.py -l mediumMaze -p SearchAgent</code>
-    <p><code>python pacman.py -l bigMaze -z .5 -p SearchAgent</code>
+  <p><code>python pacman.py -l tinyMaze -p SearchAgent</code>
+  <p><code>python pacman.py -l mediumMaze -p SearchAgent</code>
+  <p><code>python pacman.py -l bigMaze -z .5 -p SearchAgent</code>
 
 Pergunta 1:
   A ordem de exploração foi de acordo com o esperado?
@@ -42,8 +41,8 @@ Passo 2 (2 pontos):
   
   Códigos de teste:
   
-    <p><code>python pacman.py -l mediumMaze -p SearchAgent -a fn=bfs</code>
-    <p><code>python pacman.py -l bigMaze -p SearchAgent -a fn=bfs -z .5</code>
+  <p><code>python pacman.py -l mediumMaze -p SearchAgent -a fn=bfs</code>
+  <p><code>python pacman.py -l bigMaze -p SearchAgent -a fn=bfs -z .5</code>
 
 Pergunta 3:
   A busca BFS encontra a solução ótima?
@@ -60,10 +59,9 @@ Passo 3 (2 pontos):
   
   Teste seu código executando os comandos a seguir, onde os agentes tem diferentes funções de custo
   (os agentes e as funções são dados):
-  
-    <p><code>python pacman.py -l mediumMaze -p SearchAgent -a fn=ucs</code>
-    <p><code>python pacman.py -l mediumDottedMaze -p StayEastSearchAgent</code>
-    <p><code>python pacman.py -l mediumScaryMaze -p StayWestSearchAgent</code>
+  <p><code>python pacman.py -l mediumMaze -p SearchAgent -a fn=ucs</code>
+  <p><code>python pacman.py -l mediumDottedMaze -p StayEastSearchAgent</code>
+  <p><code>python pacman.py -l mediumScaryMaze -p StayWestSearchAgent</code>
 
 <b>Parte 3:</b>
   A* Search
@@ -76,8 +74,7 @@ Passo 4 (2 pontos):
   
   Teste sua implementação de A* no problema original de encontrar um caminho através de um labirinto para uma posição
   fixa usando a heurística de distância Manhattan (implementada na função manhattanHeuristic do arquivo searchAgents.py):
-  
-    <p><code>python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic</code>
+  <p><code>python pacman.py -l bigMaze -z .5 -p SearchAgent -a fn=astar,heuristic=manhattanHeuristic</code>
 
 A busca A* deve achar a solução ótima um pouco mais rapidamente que a busca de custo uniforme
 (549 vs. 621 nós de busca expandidos na nossa implementação).
@@ -92,7 +89,6 @@ Passo 5 (2 pontos):
   Implemente uma heurística admissível foodHeuristic no arquivo searchAgents.pypara o problema FoodSearchProblem.
   
   Teste seu agente no problema trickySearch:
-  
-    <p><code>python pacman.py -l trickySearch -p AStarFoodSearchAgent</code>
+  <p><code>python pacman.py -l trickySearch -p AStarFoodSearchAgent</code>
 
 Material preparado pelo curso Berkeley de <i>Inteligência Artificial</i>.
