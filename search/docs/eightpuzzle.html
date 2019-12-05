@@ -197,13 +197,13 @@
     </span><span style="color: red">"Creates a new EightPuzzleSearchProblem which stores search information."
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>puzzle <span style="font-weight: bold">= </span>puzzle
 
-  <span style="color: blue; font-weight: bold">def </span>startingState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>getStartState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
     </span><span style="color: blue; font-weight: bold">return </span>puzzle
       
-  <span style="color: blue; font-weight: bold">def </span>isGoal<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">,</span>state<span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>isGoalState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">,</span>state<span style="font-weight: bold">):
     </span><span style="color: blue; font-weight: bold">return </span>state<span style="font-weight: bold">.</span>isGoal<span style="font-weight: bold">()
    
-  </span><span style="color: blue; font-weight: bold">def </span>successorStates<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">,</span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getSuccessors<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">,</span>state<span style="font-weight: bold">):
     </span><span style="color: darkred">"""
       Returns list of (successor, action, stepCost) pairs where
       each succesor is either left, right, up, or down
@@ -214,7 +214,7 @@
       </span>succ<span style="font-weight: bold">.</span>append<span style="font-weight: bold">((</span>state<span style="font-weight: bold">.</span>result<span style="font-weight: bold">(</span>a<span style="font-weight: bold">), </span>a<span style="font-weight: bold">, </span><span style="color: red">1</span><span style="font-weight: bold">))
     </span><span style="color: blue; font-weight: bold">return </span>succ
 
-  <span style="color: blue; font-weight: bold">def </span>actionsCost<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>getCostOfActions<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
      </span><span style="color: darkred">"""
       actions: A list of actions to take
  

@@ -189,13 +189,13 @@ class EightPuzzleSearchProblem(search.SearchProblem):
     "Creates a new EightPuzzleSearchProblem which stores search information."
     self.puzzle = puzzle
 
-  def startingState(self):
+  def getStartState(self):
     return puzzle
       
-  def isGoal(self,state):
+  def isGoalState(self,state):
     return state.isGoal()
    
-  def successorStates(self,state):
+  def getSuccessors(self,state):
     """
       Returns list of (successor, action, stepCost) pairs where
       each succesor is either left, right, up, or down
@@ -206,7 +206,7 @@ class EightPuzzleSearchProblem(search.SearchProblem):
       succ.append((state.result(a), a, 1))
     return succ
 
-  def actionsCost(self, actions):
+  def getCostOfActions(self, actions):
      """
       actions: A list of actions to take
  

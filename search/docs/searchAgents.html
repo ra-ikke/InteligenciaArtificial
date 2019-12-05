@@ -113,7 +113,7 @@ Good luck and happy searching!
     </span>starttime <span style="font-weight: bold">= </span>time<span style="font-weight: bold">.</span>time<span style="font-weight: bold">()
     </span>problem <span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>searchType<span style="font-weight: bold">(</span>state<span style="font-weight: bold">) </span><span style="color: green; font-style: italic"># Makes a new search problem
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>actions  <span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>searchFunction<span style="font-weight: bold">(</span>problem<span style="font-weight: bold">) </span><span style="color: green; font-style: italic"># Find a path
-    </span>totalCost <span style="font-weight: bold">= </span>problem<span style="font-weight: bold">.</span>actionsCost<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">.</span>actions<span style="font-weight: bold">)
+    </span>totalCost <span style="font-weight: bold">= </span>problem<span style="font-weight: bold">.</span>getCostOfActions<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">.</span>actions<span style="font-weight: bold">)
     </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span><span style="color: red">'Path found with total cost of %d in %.1f seconds' </span><span style="font-weight: bold">% (</span>totalCost<span style="font-weight: bold">, </span>time<span style="font-weight: bold">.</span>time<span style="font-weight: bold">() - </span>starttime<span style="font-weight: bold">))
     </span><span style="color: blue; font-weight: bold">if </span><span style="color: red">'_expanded' </span><span style="color: blue; font-weight: bold">in </span>dir<span style="font-weight: bold">(</span>problem<span style="font-weight: bold">): </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span><span style="color: red">'Search nodes expanded: %d' </span><span style="font-weight: bold">% </span>problem<span style="font-weight: bold">.</span>_expanded<span style="font-weight: bold">)
     
@@ -152,8 +152,8 @@ Good luck and happy searching!
     goal: A position in the gameState
     """
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>walls <span style="font-weight: bold">= </span>gameState<span style="font-weight: bold">.</span>getWalls<span style="font-weight: bold">()
-    </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startingState <span style="font-weight: bold">= </span>gameState<span style="font-weight: bold">.</span>getPacmanPosition<span style="font-weight: bold">()
-    </span><span style="color: blue; font-weight: bold">if </span>start <span style="font-weight: bold">!= </span><span style="color: blue">None</span><span style="font-weight: bold">: </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startingState <span style="font-weight: bold">= </span>start
+    </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startState <span style="font-weight: bold">= </span>gameState<span style="font-weight: bold">.</span>getPacmanPosition<span style="font-weight: bold">()
+    </span><span style="color: blue; font-weight: bold">if </span>start <span style="font-weight: bold">!= </span><span style="color: blue">None</span><span style="font-weight: bold">: </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startState <span style="font-weight: bold">= </span>start
     <span style="color: blue">self</span><span style="font-weight: bold">.</span>goal <span style="font-weight: bold">= </span>goal
     <span style="color: blue">self</span><span style="font-weight: bold">.</span>costFn <span style="font-weight: bold">= </span>costFn
     <span style="color: blue; font-weight: bold">if </span>warn <span style="color: blue; font-weight: bold">and </span><span style="font-weight: bold">(</span>gameState<span style="font-weight: bold">.</span>getNumFood<span style="font-weight: bold">() != </span><span style="color: red">1 </span><span style="color: blue; font-weight: bold">or not </span>gameState<span style="font-weight: bold">.</span>hasFood<span style="font-weight: bold">(*</span>goal<span style="font-weight: bold">)):
@@ -162,10 +162,10 @@ Good luck and happy searching!
     </span><span style="color: green; font-style: italic"># For display purposes
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>_visited<span style="font-weight: bold">, </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>_visitedlist<span style="font-weight: bold">, </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>_expanded <span style="font-weight: bold">= {}, [], </span><span style="color: red">0
 
-  </span><span style="color: blue; font-weight: bold">def </span>startingState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
-    </span><span style="color: blue; font-weight: bold">return </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startingState
+  </span><span style="color: blue; font-weight: bold">def </span>getStartState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
+    </span><span style="color: blue; font-weight: bold">return </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startState
 
-  <span style="color: blue; font-weight: bold">def </span>isGoal<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>isGoalState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
      </span>isGoal <span style="font-weight: bold">= </span>state <span style="font-weight: bold">== </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>goal 
      
      <span style="color: green; font-style: italic"># For display purposes only
@@ -178,7 +178,7 @@ Good luck and happy searching!
        
      </span><span style="color: blue; font-weight: bold">return </span>isGoal   
    
-  <span style="color: blue; font-weight: bold">def </span>successorStates<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>getSuccessors<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
     </span><span style="color: darkred">"""
     Returns successor states, the actions they require, and a cost of 1.
     
@@ -208,13 +208,13 @@ Good luck and happy searching!
       
     </span><span style="color: blue; font-weight: bold">return </span>successors
 
-  <span style="color: blue; font-weight: bold">def </span>actionsCost<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>getCostOfActions<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
     </span><span style="color: darkred">"""
     Returns the cost of a particular sequence of actions.  If those actions
     include an illegal move, return 999999
     """
     </span><span style="color: blue; font-weight: bold">if </span>actions <span style="font-weight: bold">== </span><span style="color: blue">None</span><span style="font-weight: bold">: </span><span style="color: blue; font-weight: bold">return </span><span style="color: red">999999
-    </span>x<span style="font-weight: bold">,</span>y<span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startingState<span style="font-weight: bold">()
+    </span>x<span style="font-weight: bold">,</span>y<span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>getStartState<span style="font-weight: bold">()
     </span>cost <span style="font-weight: bold">= </span><span style="color: red">0
     </span><span style="color: blue; font-weight: bold">for </span>action <span style="color: blue; font-weight: bold">in </span>actions<span style="font-weight: bold">:
       </span><span style="color: green; font-style: italic"># Check figure out the next state and see whether its' legal
@@ -286,17 +286,17 @@ Good luck and happy searching!
     
     </span><span style="color: red">"*** YOUR CODE HERE ***"
     
-  </span><span style="color: blue; font-weight: bold">def </span>startingState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getStartState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
     </span><span style="color: red">"Returns the start state (in your state space, not the full Pacman state space)"
     "*** YOUR CODE HERE ***"
     </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
     
-  </span><span style="color: blue; font-weight: bold">def </span>isGoal<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>isGoalState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
     </span><span style="color: red">"Returns whether this search state is a goal state of the problem"
     "*** YOUR CODE HERE ***"
     </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
        
-  </span><span style="color: blue; font-weight: bold">def </span>successorStates<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getSuccessors<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
     </span><span style="color: darkred">"""
     Returns successor states, the actions they require, and a cost of 1.
     
@@ -322,7 +322,7 @@ Good luck and happy searching!
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>_expanded <span style="font-weight: bold">+= </span><span style="color: red">1
     </span><span style="color: blue; font-weight: bold">return </span>successors
 
-  <span style="color: blue; font-weight: bold">def </span>actionsCost<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>getCostOfActions<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
     </span><span style="color: darkred">"""
     Returns the cost of a particular sequence of actions.  If those actions
     include an illegal move, return 999999.  This is implemented for you.
@@ -378,13 +378,13 @@ Good luck and happy searching!
     <span style="color: blue">self</span><span style="font-weight: bold">.</span>_expanded <span style="font-weight: bold">= </span><span style="color: red">0
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>heuristicInfo <span style="font-weight: bold">= {} </span><span style="color: green; font-style: italic"># A dictionary for the heuristic to store information
       
-  </span><span style="color: blue; font-weight: bold">def </span>startingState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getStartState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
     </span><span style="color: blue; font-weight: bold">return </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>start
   
-  <span style="color: blue; font-weight: bold">def </span>isGoal<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>isGoalState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
     </span><span style="color: blue; font-weight: bold">return </span>state<span style="font-weight: bold">[</span><span style="color: red">1</span><span style="font-weight: bold">].</span>count<span style="font-weight: bold">() == </span><span style="color: red">0
 
-  </span><span style="color: blue; font-weight: bold">def </span>successorStates<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getSuccessors<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
     </span><span style="color: red">"Returns successor states, the actions they require, and a cost of 1."
     </span>successors <span style="font-weight: bold">= []
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>_expanded <span style="font-weight: bold">+= </span><span style="color: red">1
@@ -398,10 +398,10 @@ Good luck and happy searching!
         </span>successors<span style="font-weight: bold">.</span>append<span style="font-weight: bold">( ( ((</span>nextx<span style="font-weight: bold">, </span>nexty<span style="font-weight: bold">), </span>nextFood<span style="font-weight: bold">), </span>direction<span style="font-weight: bold">, </span><span style="color: red">1</span><span style="font-weight: bold">) )
     </span><span style="color: blue; font-weight: bold">return </span>successors
 
-  <span style="color: blue; font-weight: bold">def </span>actionsCost<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>getCostOfActions<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
     </span><span style="color: darkred">"""Returns the cost of a particular sequence of actions.  If those actions
     include an illegal move, return 999999"""
-    </span>x<span style="font-weight: bold">,</span>y<span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startingState<span style="font-weight: bold">()[</span><span style="color: red">0</span><span style="font-weight: bold">]
+    </span>x<span style="font-weight: bold">,</span>y<span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>getStartState<span style="font-weight: bold">()[</span><span style="color: red">0</span><span style="font-weight: bold">]
     </span>cost <span style="font-weight: bold">= </span><span style="color: red">0
     </span><span style="color: blue; font-weight: bold">for </span>action <span style="color: blue; font-weight: bold">in </span>actions<span style="font-weight: bold">:
       </span><span style="color: green; font-style: italic"># figure out the next state and see whether it's legal
@@ -466,7 +466,7 @@ Good luck and happy searching!
     
   </span><span style="color: blue; font-weight: bold">def </span>findPathToClosestDot<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>gameState<span style="font-weight: bold">):
     </span><span style="color: red">"Returns a path (a list of actions) to the closest dot, starting from gameState"
-    </span><span style="color: green; font-style: italic"># Here are some useful elements of the startingState
+    </span><span style="color: green; font-style: italic"># Here are some useful elements of the startState
     </span>startPosition <span style="font-weight: bold">= </span>gameState<span style="font-weight: bold">.</span>getPacmanPosition<span style="font-weight: bold">()
     </span>food <span style="font-weight: bold">= </span>gameState<span style="font-weight: bold">.</span>getFood<span style="font-weight: bold">()
     </span>walls <span style="font-weight: bold">= </span>gameState<span style="font-weight: bold">.</span>getWalls<span style="font-weight: bold">()
@@ -497,11 +497,11 @@ Good luck and happy searching!
 
     </span><span style="color: green; font-style: italic"># Store info for the PositionSearchProblem (no need to change this)
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>walls <span style="font-weight: bold">= </span>gameState<span style="font-weight: bold">.</span>getWalls<span style="font-weight: bold">()
-    </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startingState <span style="font-weight: bold">= </span>gameState<span style="font-weight: bold">.</span>getPacmanPosition<span style="font-weight: bold">()
+    </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>startState <span style="font-weight: bold">= </span>gameState<span style="font-weight: bold">.</span>getPacmanPosition<span style="font-weight: bold">()
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>costFn <span style="font-weight: bold">= </span><span style="color: blue; font-weight: bold">lambda </span>x<span style="font-weight: bold">: </span><span style="color: red">1
     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>_visited<span style="font-weight: bold">, </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>_visitedlist<span style="font-weight: bold">, </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>_expanded <span style="font-weight: bold">= {}, [], </span><span style="color: red">0
     
-  </span><span style="color: blue; font-weight: bold">def </span>isGoal<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>isGoalState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
     </span><span style="color: darkred">"""
     The state is Pacman's position. Fill this in with a goal test
     that will complete the problem definition.

@@ -29,13 +29,13 @@ by Pacman agents (in searchAgents.py).
   You do not need to change anything in this class, ever.
   """
   
-  </span><span style="color: blue; font-weight: bold">def </span>startingState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getStartState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
      </span><span style="color: darkred">"""
      Returns the start state for the search problem 
      """
      </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
     
-  </span><span style="color: blue; font-weight: bold">def </span>isGoal<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>isGoalState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
      </span><span style="color: darkred">"""
        state: Search state
     
@@ -43,7 +43,7 @@ by Pacman agents (in searchAgents.py).
      """
      </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
 
-  </span><span style="color: blue; font-weight: bold">def </span>successorStates<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getSuccessors<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
      </span><span style="color: darkred">"""
        state: Search state
      
@@ -55,7 +55,7 @@ by Pacman agents (in searchAgents.py).
      """
      </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
 
-  </span><span style="color: blue; font-weight: bold">def </span>actionsCost<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getCostOfActions<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
      </span><span style="color: darkred">"""
       actions: A list of actions to take
  
@@ -85,9 +85,9 @@ by Pacman agents (in searchAgents.py).
   To get started, you might want to try some of these simple commands to
   understand the search problem that is being passed in:
   
-  print "Start:", problem.startingState()
-  print "Is the start a goal?", problem.isGoal(problem.startingState())
-  print "Start's successors:", problem.successorStates(problem.startingState())
+  print "Start:", problem.getStartState()
+  print "Is the start a goal?", problem.isGoalState(problem.getStartState())
+  print "Start's successors:", problem.getSuccessors(problem.getStartState())
   """
   </span><span style="color: red">"*** YOUR CODE HERE ***"
   </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
