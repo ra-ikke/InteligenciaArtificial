@@ -19,8 +19,10 @@ from game import Directions
 
 DEFAULT_GRID_SIZE = 30.0
 INFO_PANE_HEIGHT = 35
-BACKGROUND_COLOR = formatColor(0,0,0)
-WALL_COLOR = formatColor(0.0/255.0, 51.0/255.0, 255.0/255.0)
+BACKGROUND_COLOR = formatColor(0.08,0.08,0.08)
+#BACKGROUND_COLOR = formatColor(0,0,0)
+#WALL_COLOR = formatColor(0.0/255.0, 51.0/255.0, 255.0/255.0)
+WALL_COLOR = formatColor(112.0/255.0, 101.0/255.0, 245.0/255.0)
 INFO_PANE_COLOR = formatColor(.4,.4,0)
 SCORE_COLOR = formatColor(.9, .9, .9)
 PACMAN_OUTLINE_WIDTH = 2
@@ -50,16 +52,20 @@ GHOST_SHAPE = [
     (-0.25, 0.75 )
   ]
 GHOST_SIZE = 0.65
-SCARED_COLOR = formatColor(1,1,1)
+#SCARED_COLOR = formatColor(1,1,1)
+SCARED_COLOR = formatColor(0.83,0.83,0.83)
 
 GHOST_VEC_COLORS = map(colorToVector, GHOST_COLORS)
 
-PACMAN_COLOR = formatColor(255.0/255.0,255.0/255.0,61.0/255)
-PACMAN_SCALE = 0.5
+#PACMAN_COLOR = formatColor(255.0/255.0,255.0/255.0,61.0/255)
+PACMAN_COLOR = formatColor(194/255.0,254/255.0,154/255.0)
+PACMAN_SCALE = 0.50
+
 #pacman_speed = 0.25
 
 # Food
-FOOD_COLOR = formatColor(1,1,1)
+#FOOD_COLOR = formatColor(1,1,1)
+FOOD_COLOR = formatColor(1.0,0.6,0.0)
 FOOD_SIZE = 0.1
 
 # Laser
@@ -67,7 +73,8 @@ LASER_COLOR = formatColor(1,0,0)
 LASER_SIZE = 0.02
 
 # Capsule graphics
-CAPSULE_COLOR = formatColor(1,1,1)
+#CAPSULE_COLOR = formatColor(1,1,1)
+CAPSULE_COLOR = formatColor(1.0,0.8,0.0)
 CAPSULE_SIZE = 0.25
 
 # Drawing walls
