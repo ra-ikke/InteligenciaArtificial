@@ -106,9 +106,9 @@ def depthFirstSearch(problem):
         # um no que ja foi visitado, ou ate terminar um caminho sem resultado
         # executando assim um backtracking
 
-        proximoNo = pilha.pop()
-        coordenada = proximoNo[0]
-        caminho = proximoNo[1]
+        no = pilha.pop()
+        coordenada = no[0]
+        caminho = no[1]
         # se a coordenada em que o pacman esta for o objetivo
         # iremos retornar o caminho (sequencia de direcoes que
         # o pacman deve percorrer para chegar ate o fim do labirinto)
@@ -158,9 +158,9 @@ def breadthFirstSearch(problem):
 
     while not fila.isEmpty():
 
-        proximoNo = fila.pop()
-        coordenada = proximoNo[0]
-        caminho = proximoNo[1]
+        no = fila.pop()
+        coordenada = no[0]
+        caminho = no[1]
 
         # verifica-se a coordenada que estamos analisando e o objetivo,
         # se for, retornaremos o caminho (sequencia de direcoes que o
@@ -209,9 +209,9 @@ def uniformCostSearch(problem):
     filaPrioridade.push((comeco, []), 0)
 
     while not filaPrioridade.isEmpty():
-        proximoNo = filaPrioridade.pop()
-        coordenada = proximoNo[0]
-        caminho = proximoNo[1]
+        no = filaPrioridade.pop()
+        coordenada = no[0]
+        caminho = no[1]
 
         if problem.isGoalState(coordenada):
             print 'Busca utilizada: uniformCostSearch'
@@ -245,7 +245,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     # cria uma Fila de Prioridades que guardara os nos que serao explorados
-    fila = util.PriorityQueue()
+    filaPrioridade = util.PriorityQueue()
 
     # cria uma colecao de itens que irao guardar as coordenadas dos nos ja explorados
     verificado = set()
@@ -255,12 +255,12 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     # iremos preencher a fila com os seguintes dados:
     # (coordenadas,caminho,custo)
     # porem custo agora e o custo comum + o valor heuristico de cada no
-    fila.push((comeco, []), 0)
+    filaPrioridade.push((comeco, []), 0)
 
-    while not fila.isEmpty():
-        proximoNo = fila.pop()
-        coordenada = proximoNo[0]
-        caminho = proximoNo[1]
+    while not filaPrioridade.isEmpty():
+        no = filaPrioridade.pop()
+        coordenada = no[0]
+        caminho = no[1]
 
         if problem.isGoalState(coordenada):
             print 'Busca utilizada: aStarSearch'
@@ -274,7 +274,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
                     # e o no sucessor com a menor custo sera o no priorizado
                     # lembrando que nesse caso o custo "total" e o custo comum adicionando o valor heuristico do no
                     custo = problem.getCostOfActions(caminho + [sucessor[1]]) + heuristic(sucessor[0], problem)
-                    fila.push((sucessor[0], caminho + [sucessor[1]]), custo)
+                    filaPrioridade.push((sucessor[0], caminho + [sucessor[1]]), custo)
 
     # util.raiseNotDefined()
 
