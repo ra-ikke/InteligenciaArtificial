@@ -113,6 +113,7 @@ def depthFirstSearch(problem):
         # iremos retornar o caminho (sequencia de direcoes que
         # o pacman deve percorrer para chegar ate o fim do labirinto)
         if problem.isGoalState(coordenada):
+            print 'Busca utilizada: depthFirstSearch'
             print caminho
             return caminho
         # verifica-se a coordenada que estamos analisando ja foi visitada,
@@ -165,6 +166,7 @@ def breadthFirstSearch(problem):
         # se for, retornaremos o caminho (sequencia de direcoes que o
         # pacman deve percorrer para chegar ate o fim do labirinto)
         if problem.isGoalState(coordenada):
+            print 'Busca utilizada: breadthFirstSearch'
             print caminho
             return caminho
 
@@ -212,6 +214,7 @@ def uniformCostSearch(problem):
         caminho = proximoNo[1]
 
         if problem.isGoalState(coordenada):
+            print 'Busca utilizada: uniformCostSearch'
             print caminho
             return caminho
         if coordenada not in visitado:
@@ -260,6 +263,8 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         caminho = proximoNo[1]
 
         if problem.isGoalState(coordenada):
+            print 'Busca utilizada: aStarSearch'
+            print caminho
             return caminho
         if coordenada not in verificado:
             verificado.add(coordenada)
