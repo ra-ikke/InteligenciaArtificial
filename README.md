@@ -7,7 +7,7 @@ Raique Carvalho Queiroz
 RA - 162030146
 Engenharia da Computação
 
-**LINK VÍDEO YOUTUBE:**
+**LINK VÍDEO YOUTUBE:** https://www.youtube.com/watch?v=FJW52Qn33fE
 
 *RESPOSTAS PARA AS QUESTÕES DO TRABALHO SE ENCONTRAM ABAIXO:*
 
