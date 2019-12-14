@@ -78,11 +78,11 @@ def depthFirstSearch(problem):
 
     To get started, you might want to try some of these simple commands to
     understand the search problem that is being passed in:
-
+"""
     print "Start:", problem.getStartState()
     print "Is the start a goal?", problem.isGoalState(problem.getStartState())
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
-    """
+
     "*** YOUR CODE HERE ***"
     # cria uma Pilha que guardara os nos que serao visitados
     pilha = util.Stack()
